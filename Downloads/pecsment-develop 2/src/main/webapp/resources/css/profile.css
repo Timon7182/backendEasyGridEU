@@ -1,0 +1,104 @@
+.top-content{
+    width: 100%;
+    height: 30%;
+    font-family:"Gill Sans";
+
+
+}
+.create_btn{
+    background-color: #e63946;
+    width: 67%;
+    font-size: 22px;
+    font-weight: bold;
+
+}
+
+.bottom-container{
+    width: 100%;
+    font-family:"Gill Sans";
+
+    height: 60%;
+    margin-top: 70px;
+}
+.middle-content{
+    width: 100%;
+    margin-top: 10px;
+    height: 5vh;
+}
+.logo-my{
+    font-size: 15vh;
+    border:1vh ridge #1d3557;
+    color: #e63946;
+    font-family:"Gill Sans";
+
+}
+
+.name{
+    margin-left: 10px;
+    color: #1d3557;
+    font-size: 60px;
+}
+.email-span{
+    padding-right: 10px;
+}
+.contact_number{
+    font-size: 20px;
+}
+.contact_number1{
+    margin-top:110px;
+
+}
+.contact_number2{
+    margin-top: 20px;
+}
+.contact_number3{
+    margin-top: 20px;
+}
+.titleflats{
+    font-family:"Gill Sans";
+color: #e63946;
+    font-weight: bold;
+    float: left;
+    border:0.5vh ridge #1d3557;
+    font-size:2vh;
+
+
+}
+.content-bottom{
+    margin-top:20px;
+}
+.flat-content{
+font-size: 2vh;
+
+}
+.flat-in{
+float: left;
+font-size: 22px;
+font-weight: bold;
+}
+.flat-content  .flat-out{
+    float: left;
+    font-size: 2vh;
+    color:red;
+    font-weight: bolder;
+
+}
+.row-even {
+    background-color:  #e63946;
+}
+
+.row-odd {
+    background-color: white;
+}
+.row-odd-btn{
+    background-color: white;
+}
+.row-even-btn{
+    background-color: darkcyan;
+}
+.changeButton{
+    float: left;
+}
+.deleteButton{
+    float: left;
+}

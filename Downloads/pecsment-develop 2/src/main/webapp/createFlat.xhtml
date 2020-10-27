@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+>
+<h:head>
+    <link href="/resources/css/createFlat.css" rel="stylesheet" type="text/css" />
+    <title>Create Flat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous"/>
+</h:head>
+<h:body>
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-center">
+                    <div class="brand_logo_container">
+                        <a class="navbar-brand">Create new Flat</a>
+                    </div>
+                </div>
+
+                <div class="user_card_content">
+
+
+                    <div class="d-flex justify-content-center form_container">
+                        <h:form >
+                            <div class="input-group mb-3 content-to-left">
+
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-user-o"></i></span>
+                                </div>
+
+                                <p:inputText type="text" label="title" name="title"   id="title" class="form-control input_user" value="#{flatJsfService.title}" placeholder="title">
+
+                                </p:inputText>
+                                <h:selectOneMenu value="#{flatJsfService.city}" styleClass="list-menu col-sm-3">
+                                    <f:selectItem itemValue="" itemLabel="City" />
+                                    <f:selectItem itemValue="Pecs" itemLabel="Pecs" />
+                                    <f:selectItem itemValue="Budapest" itemLabel="Budapest" />
+                                </h:selectOneMenu>
+                                <p:inputText type="text" label="address" name="address"   id="address" class="form-control input_user" value="#{flatJsfService.address}" placeholder="address">
+
+                                </p:inputText>
+
+
+
+                            </div>
+                            <div class="input-group mb-3 content-to-left">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-user-o"></i></span>
+                                </div>
+
+                                <p:inputText type="text" label="price" name="price"   id="price" class="form-control input_user" value="#{flatJsfService.priceDecimal}" placeholder="price">
+
+                                </p:inputText>
+                                <p:inputText type="text" label="utilities" name="utilities"   id="utilities" class="form-control input_user" value="#{flatJsfService.utilitiesDecimal}" placeholder="utilities">
+
+                                </p:inputText>
+                            </div>
+                            <div class="input-group mb-3 content-to-left">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-sort-numeric-asc"></i></span>
+                                </div>
+
+                                <p:inputText type="text" label="numberofrooms" name="numberofrooms"   id="numberofrooms" class="form-control input_user" value="#{flatJsfService.numberOfRooms}" placeholder="numberOfRooms">
+
+                                </p:inputText>
+                                <p:inputText type="text" label="numberOfBeds" name="numberOfBeds"   id="numberOfBeds" class="form-control input_user" value="#{flatJsfService.numberOfBeds}" placeholder="numberOfBeds">
+
+                                </p:inputText>
+                            </div>
+                            <div class="input-group mb-3 content-to-left">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                </div>
+                                <p:calendar id="event" value="#{flatJsfService.availableFrom}" placeholder="Available from dd/MM/yyyy">
+                                </p:calendar>
+
+                                <div class="input-group-append">
+                                        <span class="input-group-text">Rent or Buy</span>
+                                    </div>
+                                    <h:selectOneMenu value="#{flatJsfService.rentORbuy}" styleClass="list-menu col-sm-3">
+                                        <f:selectItem itemValue="" itemLabel="Select" />
+                                        <f:selectItem itemValue="true" itemLabel="Rent" />
+                                        <f:selectItem itemValue="false" itemLabel="Sell" />
+                                    </h:selectOneMenu>
+
+
+                            </div>
+
+                            <div class="input-group mb-3 content-to-left">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Furnished</span>
+                                </div>
+                                <h:selectOneMenu value="#{flatJsfService.renovated}" styleClass="list-menu col-sm-3">
+                                    <f:selectItem itemValue="" itemLabel="Select" />
+                                    <f:selectItem itemValue="true" itemLabel="Renovated" />
+                                    <f:selectItem itemValue="false" itemLabel="Not renovated" />
+                                </h:selectOneMenu>
+
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Renovated</span>
+                                </div>
+                                <h:selectOneMenu value="#{flatJsfService.furnished}" styleClass="list-menu col-sm-3">
+                                    <f:selectItem itemValue="" itemLabel="Select" />
+                                    <f:selectItem itemValue="true" itemLabel="Furnished" />
+                                    <f:selectItem itemValue="false" itemLabel="not furnished" />
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="input-group mb-3 content-to-left">
+
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Internet</span>
+                                </div>
+                                <p:selectOneRadio id="radio" value="#{flatJsfService.wifi}">
+                                    <f:selectItem itemLabel="Yes" itemValue="true" />
+                                    <f:selectItem itemLabel="No" itemValue="false" />
+                                    <p:ajax update="internetSpeed" />
+                                </p:selectOneRadio>
+
+
+
+                                <p:inputText id="internetSpeed"  value="#{flatJsfService.internetSpeed}" placeholder="speed of internet" disabled="#{flatJsfService.wifi == 'false'}" />
+
+
+                            </div>
+                            <div class="input-group mb-2 col-sm-12 details-content ">
+
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-info"></i></span>
+                                </div>
+                                <p:inputText type="text" label="detials" name="details"   id="details" class="form-control input_user" value="#{flatJsfService.details}" placeholder="Details">
+
+                                </p:inputText>
+                            </div>
+
+                            <div class="d-flex justify-content-center mt-3 login_container ">
+                                <h:commandButton id="create" styleClass="btn  create_btn" value="Create" action="#{flatJsfService.createFlat(flatJsfService)}"/>
+                                <h:commandButton id="cancel" styleClass="btn  cancel_btn" value="Cancel" action="/WelcomePage.jsf"/>
+                            </div>
+                        </h:form>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</h:body>
+</html>

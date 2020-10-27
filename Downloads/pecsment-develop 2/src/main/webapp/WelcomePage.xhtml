@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<h:head>
+    <link href="/resources/css/style.css" rel="stylesheet" type="text/css" />
+
+    <link href="/resources/bootstrap-4.5.3-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</h:head>
+
+<h:body>
+    <ui:composition template="layout.xhtml">
+
+        <ui:define name="script"><h:outputScript library="js" name="jquery-3.5.1.min.js"/> </ui:define>
+
+        <ui:define name="content">
+
+
+                #{flatJsfService.loadData(0,10)}
+                <ui:repeat var="flat" value="#{flatJsfService.getListOfFlats()}" varStatus="status" >
+                        <div class="container-fluid" >
+                            <div class="row">
+                                <div class="col-sm-4">
+
+                                    <p:imageSwitch effect="fade" >
+                                        <ui:repeat value="#{fileJsfService.getImages(flat.id)}" var="idd">
+
+                                            <p:graphicImage  value="#{fileJsfService.image}"  style="width: 100%;height: auto;">
+                                                <f:param name="fileId" id="fileId" value="#{idd}" />
+                                            </p:graphicImage>
+                                        </ui:repeat>
+                                    </p:imageSwitch>
+
+
+                                </div>
+
+                                <div class="col-sm-8 ">
+                                    <div class="flat-list">
+
+                                        <div class="list-header">
+                                            <a href="#">#{flat.title}.<span class="list-header-span">#{flat.availableFrom}</span></a>
+                                            <br></br>
+                                            <p>#{flat.address}</p>
+                                        </div>
+                                        <div class="list-content">
+                                            <p>#{flat.details}</p>
+                                            <p class="list-normalPrice">#{flat.normalPrice}</p>
+                                            <p class="list-numberOfRooms">#{flat.numberOfRooms}</p>
+                                            <p class="list-numberOfRooms">#{flat.numberOfBeds}</p>
+                                            <p class="list-furnished">#{flat.furnished}</p>
+                                            <p class="list-renovated">#{flat.renovated}</p>
+                                            <p class="list-internetSpeed">#{flat.internetSpeed}</p>
+
+                                        </div>
+                                        <div class="list-footer">
+                                            <span class="list-footer-total">#{flat.normalTotal}</span>
+                                            <span class="list-footer-utilitie">#{flat.normalUtilities}</span>
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                            <!--                    https://bugsdb.com/_en/debug/04a08ace338861c52976f2109c4d28cc-->
+                        </div>
+<!--                    https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_theme_company_complete_animation-->
+
+                </ui:repeat>
+
+
+
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+<h:head>
+    <link href="/resources/css/profile.css" rel="stylesheet" type="text/css" />
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous"/>
+</h:head>
+
+<h:body>
+
+    <div class="container-fluid top-content">
+        <h:form>
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col-sm-3 col-md-2 col-lg-1 logo-my justify-content-center d-flex ">
+                        <h:outputText>#{landlordJsfService.getFirstLetterOfName()}</h:outputText>
+                    </div>
+                    <div class="col-sm-9 col-md-10 col-lg-11">
+
+                        <div class="name col-sm-4"><h:outputText style="float: left" value="#{landlordJsfService.getLoggedUser().getName()}"></h:outputText>
+                            <h:outputText style="float: left" value="#{landlordJsfService.getLoggedUser().getSurname()}"></h:outputText>
+                        </div>
+                        <div class="contact_number1 contact_number col-sm-4">
+                            <span class="email-span"><i class="fas fa-envelope"></i>
+                            </span>
+                            #{landlordJsfService.getLoggedUser().getEmail()}
+                        </div>
+                        <div class="contact_number2 contact_number col-sm-4">
+                            <span class="email-span"><i class="fas fa-phone"></i>
+                            </span>
+                            #{landlordJsfService.getLoggedUser().getContactNumber()}
+                        </div>
+                        <div class="contact_number3 contact_number col-sm-4">
+                            <span class="email-span"><i class="fas fa-credit-card-alt"></i>
+                            </span>
+                            #{landlordJsfService.getLoggedUser().getMoney()}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+    </div>
+    <div class="middle-content container-fluid ">
+
+        <div class="row">
+            <div class="col-sm-1 titleflats" style="background-color: crimson"></div>
+            <div class="col-sm-1 titleflats"></div>
+            <div class="col-sm-1 titleflats" style="background-color: crimson"></div>
+            <div class="col-sm-1 titleflats"></div>
+            <div class="titleflats col-sm-3 justify-content-center d-flex">
+                <h:outputText>List of Your Flats</h:outputText>
+            </div>
+            <div class="col-sm-1 titleflats" style="background-color: crimson"></div>
+            <div class="col-sm-1 titleflats"></div>
+            <div class="col-sm-1 titleflats" style="background-color: crimson"></div>
+            <div class="col-sm-1 titleflats"></div>
+            <div class="col-sm-1 titleflats" style="background-color: crimson"></div>
+
+        </div>
+
+    </div>
+
+    #{landlordJsfService.loadData(0,10)}
+    <div class="container-fluid bottom-container">
+            <h:form>
+                <div class="container-fluid" >
+                    <div class="row">
+
+                        <div class="col-sm-2 flat-content ${status.even ? 'row-even' : 'row-odd'}">
+                            <div class="flat-out">Id:</div>
+
+
+
+                        </div>
+                        <div class="col-sm-3 flat-content ${status.even ? 'row-even' : 'row-odd'}">
+                            <div class="flat-out">Title:</div>
+                        </div>
+                        <div class="col-sm-2 flat-content  ${status.even ? 'row-even' : 'row-odd'}">
+                            <div class="flat-out">City:</div>
+                        </div>
+                        <div class="col-sm-3 flat-content ${status.even ? 'row-even' : 'row-odd'} ">
+                            <div class="flat-out">Address:</div>
+                        </div>
+                        <div class="col-sm-2"></div>
+
+                    </div>
+                </div>
+                <ui:repeat var="flat" value="#{landlordJsfService.getFlatList()}" varStatus="status" >
+
+                    <div class="container-fluid ${status.even ? 'row-even' : 'row-odd'}" >
+                        <div class="row">
+
+                            <div class="col-sm-2 ">
+                                <div class="flat-in"> #{flat.id}</div>
+                            </div>
+                            <div class="col-sm-3 ">
+                                <div class="flat-in"> #{flat.title}</div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="flat-in"> #{flat.city}</div>
+                            </div>
+                            <div class="col-sm-3  ">
+                                <div class="flat-in"> #{flat.address}</div>
+                            </div>
+                            <div class="col-sm-2  " style="background-color: white">
+                                <div class="btn-change">
+                                    <h:commandButton id="changeButton"
+                                                     styleClass=" flat-in ${status.even ? 'row-even-btn' : 'row-odd-btn'} " value="Change" action="#{flatJsfService.change(flat.id)}"/>
+                                </div>
+                                <div class="btn-delete">
+                                    <h:commandButton id="deleteButton"
+                                                     styleClass=" flat-in  ${status.even ? 'row-even-btn' : 'row-odd-btn'}" value="Delete" action="#{flatJsfService.delete(flat.id)}"/>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </ui:repeat>
+
+                <div class="container-fluid ${status.even ? 'row-even' : 'row-odd'}" >
+                    <div class="row">
+
+                        <div class="col-sm-2 ">
+
+                        </div>
+                        <div class="col-sm-3 ">
+
+                        </div>
+                        <div class="col-sm-2">
+
+                        </div>
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-2  " style="background-color: white">
+                            <div class="btn_create">
+                                <h:commandButton id="newFlat"
+                                                 styleClass=" create_btn " value="Create" action="/createFlat.jsf"/>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </h:form>
+
+
+
+    </div>
+
+</h:body>
+</html>

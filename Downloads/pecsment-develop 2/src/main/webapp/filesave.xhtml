@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<f:view>
+        <h:head>
+                <title>File Upload</title>
+        </h:head>
+        <form method="POST" action="upload" enctype="multipart/form-data" >
+                File:
+                <input type="file" name="file" id="file" />
+
+                <input type="hidden" id="id" name="id" value="#{flatJsfService.id}"></input>
+                <input type="submit" value="Upload" name="upload" id="upload" />
+        </form>
+
+        <div><h:inputText value="#{flatJsfService.title}">Title:</h:inputText></div>-->
+        <!--                                        <div><h:inputText value="#{flatJsfService.city}">City:</h:inputText></div>-->
+        <!--                                        <div><h:inputText value="#{flatJsfService.address}">Address:</h:inputText></div>-->
+        <!--                                        <div><h:inputText value="#{flatJsfService.priceDecimal}">Price:</h:inputText></div>-->
+        <!--                                        <div><h:inputText value="#{flatJsfService.utilitiesDecimal}">Utilities:</h:inputText></div>-->
+        <!--                                        <div><h:inputText value="#{flatJsfService.details}">Detaile:</h:inputText></div>-->
+        <!--                                        <div><h:inputText value="#{flatJsfService.rentORbuy}">rent:</h:inputText></div>-->
+        <!--                                        <div><h:inputText value="#{flatJsfService.landlordid}">Landlord:</h:inputText></div>-->
+        <!--                                        <div><h:inputText value="#{flatJsfService.numberOfRooms}">numberOfRooms:</h:inputText></div>-->
+        <!--                                        <div><h:inputText value="#{flatJsfService.wifi}">wifi:</h:inputText></div>-->
+        <!--                                        <div><h:inputText value="#{flatJsfService.renovated}">renovated:</h:inputText></div>-->
+        <!--                                        <div><h:inputText value="#{flatJsfService.internetSpeed}">internetSpeed:</h:inputText></div>-->
+
+        <!--                                        <h:commandButton  value="Save" action="#{flatJsfService.createFlat(flatJsfService)}"/>-->
+</f:view>
+
+</html>

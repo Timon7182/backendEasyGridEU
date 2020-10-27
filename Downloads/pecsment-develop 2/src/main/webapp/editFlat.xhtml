@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+>
+
+
+
+
+<h:head>
+    <link href="/resources/css/editFlat.css" rel="stylesheet" type="text/css" />
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyCu4pEsacqJOadZ2VvWfvfgSMiMJk7q-y0"  type="text/javascript"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous"/>
+</h:head>
+<h:body>
+
+    <h:form>
+
+        <div class="top-content container-fluid">
+            <div class="row">
+                <div class="col-sm-4 left-container">
+                    <div class="id">
+                        #{editRecord.id}
+                    </div>
+                </div>
+                <div class="col-sm-8 right-container">
+                    <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4 input-group">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-city" >City           :</span>
+                            </div>
+                            <h:inputText type="text" class="form-control"
+                                   value="#{editRecord.city}"
+                                   aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></h:inputText>
+                        </div>
+                        <div class="col-sm-4 input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-titile">Title</span>
+                            </div>
+                            <h:inputText type="text" class="form-control"
+                                   value="#{editRecord.title}"
+                                   aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></h:inputText>
+
+                        </div>
+                        <div class="col-sm-4 input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-address">Address</span>
+                            </div>
+                            <h:inputText type="text" class="form-control"
+                                   value="#{editRecord.address}"
+                                   aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></h:inputText>
+                        </div>
+
+                    </div>
+                </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-3 input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-price">Price</span>
+                                </div>
+                                <h:inputText
+                                        a:placeholder="#{editRecord.normalPrice}" type="text" class="form-control"
+                                       value="#{flatJsfService.priceDecimal}"
+                                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></h:inputText>
+                            </div>
+
+                            <div class="col-sm-3 input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-utilities">Utilities</span>
+                                </div>
+                                <h:inputText type="text" class="form-control"
+                                             a:placeholder="#{editRecord.normalUtilities}"
+                                       value="#{flatJsfService.utilitiesDecimal}"
+                                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></h:inputText>
+                            </div>
+                            <div class="col-sm-3 input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-aavailablefrom">Available From</span>
+                                </div>
+                                <p:calendar id="button"  style="float: left" styleClass="form-control" value="#{editRecord.availableFrom}" showOn="button" />
+
+
+                            </div>
+                            <div class="col-sm-3 input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-rentorBuy">Rent or Buy</span>
+                                </div>
+                                <h:inputText type="text" class="form-control"
+                                       value="#{editRecord.rentORbuy}"
+                                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></h:inputText>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-3 input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-numberOfBeds">Number of Beds</span>
+                                </div>
+                                <h:inputText type="text" class="form-control"
+                                       value="#{editRecord.numberOfBeds}"
+                                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></h:inputText>
+                            </div>
+
+                            <div class="col-sm-3 input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-numberOfRooms">Number Of Rooms</span>
+                                </div>
+                                <h:inputText type="text" class="form-control"
+                                       value="#{editRecord.numberOfRooms}"
+                                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></h:inputText>
+                            </div>
+
+                            <div class="col-sm-3 input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-renovated">Renovated</span>
+                                </div>
+                                <h:inputText type="text" class="form-control"
+                                       value="#{editRecord.renovated}"
+                                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></h:inputText>
+                            </div>
+                            <div class="col-sm-3 input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-furnished">Furnished</span>
+                                </div>
+                                <h:inputText type="text" class="form-control"
+                                       value="#{editRecord.furnished}"
+                                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></h:inputText>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6 input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-wifi">Wifi</span>
+                                </div>
+                                <h:inputText type="text" class="form-control"
+                                       value="#{editRecord.wifi}"
+                                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></h:inputText>
+                            </div>
+                            <div class="col-sm-6 input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-internet">Speed of Internet</span>
+                                </div>
+                                <h:inputText type="text" class="form-control"
+                                       value="#{editRecord.internetSpeed}"
+                                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></h:inputText>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-details">Details</span>
+                                </div>
+                                <h:inputText type="text" class="form-control"
+                                       value="#{editRecord.details}"
+                                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"></h:inputText>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <h:commandButton id="btnSave" styleClass="btn save_btn" value="Save" action="#{flatJsfService.save(flatJsfService.priceDecimal,flatJsfService.utilitiesDecimal,editRecord)}"/>
+                        <h:commandButton id="btnCancel" styleClass="btn cancel_btn" value="Cancel" action="/profPage.jsf"/>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="bottom-content">
+
+            <div class="flat-images d-flex justify-content-center ">
+                <table>
+                    <tbody>
+                <tr>
+
+                    <ui:repeat value="#{fileJsfService.getImages(editRecord.id)}" var="idd">
+                        <td>
+                        <p:graphicImage  value="#{fileJsfService.image}"  style="width: 100%;height: auto;">
+                            <f:param name="fileId" id="fileId" value="#{idd}" />
+                        </p:graphicImage>
+                        </td>
+                    </ui:repeat>
+
+                </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+        </div>
+
+
+
+
+    </h:form>
+</h:body>
+
+
+
+</html>

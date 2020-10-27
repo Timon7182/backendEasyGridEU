@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:sec="http://www.springframework.org/security/tags">
+<h:head>
+    <link href="/resources/css/style.css" rel="stylesheet" type="text/css" />
+
+    <link href="/resources/bootstrap-3.4.1-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="/resources/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+    <!--    <script src="/resources/bootstrap-4.5.3-dist/js/jquery.min.js"></script>-->
+    <!--    cdnjs.cloudflare.com/ajax/lib-->
+</h:head>
+<body>
+
+<div id="page" class ="page">
+
+    <div id="header-container" class="header">
+
+<nav class="navbar navbarstyle ">
+<div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle " data-toggle="collapse" data-target="#myNavbar" >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Pécsment</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-left">
+            <li class="navbar-item"><a href="#">Home</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Search flat <span class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-content">
+                    <li><a href="#">Searching flats</a></li>
+                    <li><a href="#">Page 2</a></li>
+                    <li><a href="#">Page 3</a></li>
+                </ul>
+            </li>
+            <li><a href="#">News</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">About Us <span class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-content">
+                    <li><a href="#">Who are we?</a></li>
+                    <li><a href="#">How to contact us?</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-login" ><h:link outcome="login.xhtml" rendered="#{pageJsfService.isUser()=='false'}"><span class="glyphicon glyphicon-log-in" ></span>  SignUp or Login </h:link></li>
+
+            <h:form styleClass="form-profile">
+                <p:menuButton value="Profile" styleClass="smth profile-main" rendered="#{pageJsfService.isUser()=='true'}" >
+                    <p:menuitem value="My Page" action="#" styleClass="profile-content" />
+                    <p:menuitem value="New Flat" action="#" styleClass="profile-content"  />
+                    <p:separator />
+                    <p:menuitem value="Log out" action="/logout" styleClass="profile-content" />
+                </p:menuButton>
+            </h:form>
+
+
+        </ul>
+    </div>
+</div>
+</nav>
+<!--              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+-->
+    </div>
+
+
+    <div id="content-container" class="content">
+        <div id="content">
+            <ui:insert name="content">Default Title</ui:insert>
+            <h:outputStylesheet name="bootstrap-3.4.1-dist/css/bootstrap.min.css"/>
+
+<!--            <h:outputScript library="js" name="jquery-3.5.1.min.js"/>-->
+
+        </div>
+
+    </div>
+    <div id="footer-container" class="footer-container">
+        <div id="footer" class="footer">
+            <ui:insert name="footer">
+
+
+                <h:outputText  rendered="#{pageJsfService.isUser()=='true'}">
+                    USER
+                </h:outputText>
+
+
+                <p>Footer</p>
+            </ui:insert>
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>

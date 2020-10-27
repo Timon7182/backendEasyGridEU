@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+
+<h:head>
+    <link href="/resources/css/registration.css" rel="stylesheet" type="text/css" />
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous"/>
+</h:head>
+<h:body>
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-center">
+                    <div class="brand_logo_container">
+                        <a class="navbar-brand" href="#">Pécsment</a>
+                    </div>
+                </div>
+
+                <div class="user_card_content">
+
+                    <div class="d-flex justify-content-center form_container">
+                        <h:form >
+                            <div class="input-group mb-3">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-user-o"></i></span>
+                                </div>
+
+                                <p:inputText type="text" label="name" name="name" required="true" requiredMessage="Name has to be filled"  id="name" class="form-control input_user" value="#{landlordJsfService.name}" placeholder="name">
+                                    <f:validator validatorId="nameValidator" />
+                                    <p:ajax update="msgname" event="blur"/>
+                                </p:inputText>
+                                <p:message for="name" id="msgname" />
+
+
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-user-o"></i></span>
+                                </div>
+
+                                <p:inputText type="text" name="surname" id="surname" class="form-control input_user" value="#{landlordJsfService.surname}" placeholder="surname">
+                                    <f:validator  validatorId="surnameValidator" />
+                                    <p:ajax update="msgSurname" event="blur" />
+                                </p:inputText>
+                                <p:message for="surname" id="msgSurname"/>
+
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-user-o"></i></span>
+                                </div>
+
+                                <p:inputText type="text" name="username" required="true" id="username" class="form-control input_user" value="#{landlordJsfService.username}" placeholder="username">
+                                    <f:validator  binding="#{usernameValidator}" />
+                                    <p:ajax update="msgUsername" event="blur"/>
+                                </p:inputText>
+                                <p:message for="username" id="msgUsername"/>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+
+                                <p:inputText type="text" name="email" required="true" id="email" class="form-control input_user" value="#{landlordJsfService.email}" placeholder="email">
+<!--                                    <f:validator  validatorId="emailValidator"/>-->
+                                    <p:ajax update="msgEmail" event="blur"/>
+
+                                </p:inputText>
+                                <p:message for="email" id="msgEmail"/>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                </div>
+
+                                <p:inputText type="text" name="contactnumber" required="true" id="contactnumber" class="form-control input_user" value="#{landlordJsfService.contactNumber}" placeholder="contact number"/>
+                            </div>
+                            <div class="input-group mb-2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <p:password type="password" id="password" required="true" name="j_password" class="form-control input_pass" value="#{landlordJsfService.password}" placeholder="password" />
+                            </div>
+
+                            <div class="d-flex justify-content-center mt-3 login_container">
+                                <h:commandButton id="s" styleClass="btn login_btn" value="Register" action="#{landlordJsfService.createNewLandlord(landlordJsfService)}"/>
+                            </div>
+                        </h:form>
+                    </div>
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-center links">
+                            Already have an account? <a href="login.jsf" class="ml-2">Sign in</a>
+                        </div>
+                        <div class="d-flex justify-content-center links">
+                            <a href="registrationConsumer.jsf">Change to Consumer Sign up</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</h:body>
+</html>
